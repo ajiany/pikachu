@@ -30,7 +30,7 @@ func customRobotCli() *httpx.Httpx {
 		cli := httpx.NewHttpx(httpx.WithHost(CustomRobotHost), httpx.WithUrlPrefix(CustomRobotPrefix))
 
 		cli.SetBeforeRequestHook(func(req *httpx.Request, opts *httpx.Option) {
-			req.Req.Header.Set("Content-Type", "application/json; charset=utf-8")
+			req.Req.Header.Set("Content-Type", "application/test_helper; charset=utf-8")
 		})
 
 		cli.SetAfterRequestHook(func(resp *httpx.Response) error {
@@ -58,10 +58,10 @@ type CustomRobot struct {
 }
 
 type BotMessage struct {
-	Timestamp string                 `json:"timestamp,omitempty"`
-	Sign      string                 `json:"sign,omitempty"`
-	MsgType   string                 `json:"msg_type"`
-	Content   map[string]interface{} `json:"content"`
+	Timestamp string                 `test_helper:"timestamp,omitempty"`
+	Sign      string                 `test_helper:"sign,omitempty"`
+	MsgType   string                 `test_helper:"msg_type"`
+	Content   map[string]interface{} `test_helper:"content"`
 }
 
 func NewCustomRobot(token, secret string) *CustomRobot {

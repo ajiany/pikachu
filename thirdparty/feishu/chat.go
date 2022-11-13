@@ -21,8 +21,8 @@ func (cli *Client) GetChats(ctx context.Context, pageToken string) ([]Chat, *Pag
 	var resp struct {
 		Data struct {
 			Pagination
-			Items []Chat `json:"items"`
-		} `json:"data"`
+			Items []Chat `test_helper:"items"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, nil, errors.WithStack(err)

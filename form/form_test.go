@@ -2,12 +2,12 @@ package form
 
 import (
 	"context"
-	"github.com/ajiany/pikachu/tools/json"
+	"github.com/ajiany/pikachu/tools/test_helper"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
-	_ "github.com/ajiany/pikachu/tools/json"
+	_ "github.com/ajiany/pikachu/tools/test_helper"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
@@ -117,12 +117,12 @@ func TestFormSuccess(t *testing.T) {
 		}
 
 		if tc.withStatusInResponse {
-			js := json.JSONResp(w.Result())
+			js := test_helper.JSONResp(w.Result())
 			assert.Equal(t, tc.message, js.Get("msg").MustString())
 			assert.Equal(t, tc.statusInResponse, js.Get("status").MustInt())
 		} else {
 			if w.Code != 200 {
-				js := json.JSONResp(w.Result())
+				js := test_helper.JSONResp(w.Result())
 				assert.Equal(t, tc.message, js.Get("errors").GetIndex(0).MustString())
 			}
 		}

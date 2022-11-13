@@ -23,8 +23,8 @@ func (cli *Client) GetUserGroups(ctx context.Context, pageToken string) ([]UserG
 	var resp struct {
 		Data struct {
 			Pagination
-			Items []UserGroup `json:"grouplist"`
-		} `json:"data"`
+			Items []UserGroup `test_helper:"grouplist"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, nil, errors.WithStack(err)

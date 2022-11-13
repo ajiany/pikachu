@@ -22,8 +22,8 @@ func (cli *Client) GetMeetingRoomFreeBusy(ctx context.Context, roomIds []string,
 
 	var resp struct {
 		Data struct {
-			FreeBusy map[string][]FreeBusyItem `json:"free_busy"`
-		} `json:"data"`
+			FreeBusy map[string][]FreeBusyItem `test_helper:"free_busy"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, errors.WithStack(err)
@@ -46,8 +46,8 @@ func (cli *Client) GetBuildings(ctx context.Context, pageToken string) ([]Buildi
 	var resp struct {
 		Data struct {
 			Pagination
-			Buildings []Building `json:"buildings"`
-		} `json:"data"`
+			Buildings []Building `test_helper:"buildings"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, nil, errors.WithStack(err)
@@ -92,8 +92,8 @@ func (cli *Client) GetMeetingRooms(ctx context.Context, buildingId string, pageT
 	var resp struct {
 		Data struct {
 			Pagination
-			Rooms []MeetingRoom `json:"rooms"`
-		} `json:"data"`
+			Rooms []MeetingRoom `test_helper:"rooms"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, nil, errors.WithStack(err)

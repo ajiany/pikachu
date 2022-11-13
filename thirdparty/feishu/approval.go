@@ -24,8 +24,8 @@ func (cli *Client) GetApprovalInstanceIds(ctx context.Context, approvalCode stri
 
 	var resp struct {
 		Data struct {
-			Ids []string `json:"instance_code_list"`
-		} `json:"data"`
+			Ids []string `test_helper:"instance_code_list"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, errors.WithStack(err)
@@ -74,7 +74,7 @@ func (cli *Client) GetApprovalInstance(ctx context.Context, instanceCode string)
 	}
 
 	var resp struct {
-		Data ApprovalInstance `json:"data"`
+		Data ApprovalInstance `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, errors.WithStack(err)

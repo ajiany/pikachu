@@ -10,17 +10,17 @@ import (
 )
 
 type ResponseData struct {
-	Code int    `json:"code"`
-	Msg  string `json:"msg"`
+	Code int    `test_helper:"code"`
+	Msg  string `test_helper:"msg"`
 }
 
 type TenantAccessToken struct {
-	Token  string `json:"tenant_access_token"`
-	Expire int64  `json:"expire"`
+	Token  string `test_helper:"tenant_access_token"`
+	Expire int64  `test_helper:"expire"`
 }
 
 type TextMessage struct {
-	Text string `json:"text"`
+	Text string `test_helper:"text"`
 }
 
 func (t TextMessage) String() string {
@@ -29,76 +29,76 @@ func (t TextMessage) String() string {
 }
 
 type Pagination struct {
-	HasMore   bool   `json:"has_more"`
-	PageToken string `json:"page_token"`
+	HasMore   bool   `test_helper:"has_more"`
+	PageToken string `test_helper:"page_token"`
 }
 
 type Chat struct {
-	Id   string `json:"chat_id"`
-	Name string `json:"name"`
+	Id   string `test_helper:"chat_id"`
+	Name string `test_helper:"name"`
 }
 
 type User struct {
-	UnionId      string       `json:"union_id"`
-	UserId       string       `json:"user_id"`
-	OpenId       string       `json:"open_id"`
-	Name         string       `json:"name"`
-	EnName       string       `json:"en_name"`
-	Nickname     string       `json:"nickname"`
-	Email        string       `json:"email"`
-	Gender       int64        `json:"gender"`
-	City         string       `json:"city"`
-	Country      string       `json:"country"`
-	WorkStation  string       `json:"work_station"`
-	JoinTime     int64        `json:"join_time"`
-	EmployeeNo   string       `json:"employee_no"`
-	EmployeeType int64        `json:"employee_type"`
-	JobTitle     string       `json:"job_title"`
-	CustomAttrs  []CustomAttr `json:"custom_attrs"`
-	Status       *UserStatus  `json:"status"`
+	UnionId      string       `test_helper:"union_id"`
+	UserId       string       `test_helper:"user_id"`
+	OpenId       string       `test_helper:"open_id"`
+	Name         string       `test_helper:"name"`
+	EnName       string       `test_helper:"en_name"`
+	Nickname     string       `test_helper:"nickname"`
+	Email        string       `test_helper:"email"`
+	Gender       int64        `test_helper:"gender"`
+	City         string       `test_helper:"city"`
+	Country      string       `test_helper:"country"`
+	WorkStation  string       `test_helper:"work_station"`
+	JoinTime     int64        `test_helper:"join_time"`
+	EmployeeNo   string       `test_helper:"employee_no"`
+	EmployeeType int64        `test_helper:"employee_type"`
+	JobTitle     string       `test_helper:"job_title"`
+	CustomAttrs  []CustomAttr `test_helper:"custom_attrs"`
+	Status       *UserStatus  `test_helper:"status"`
 }
 
 type UserStatus struct {
-	IsFrozen    bool `json:"is_frozen"`
-	IsResigned  bool `json:"is_resigned"`
-	IsActivated bool `json:"is_activated"`
-	IsExited    bool `json:"is_exited"`
-	IsUnjoin    bool `json:"is_unjoin"`
+	IsFrozen    bool `test_helper:"is_frozen"`
+	IsResigned  bool `test_helper:"is_resigned"`
+	IsActivated bool `test_helper:"is_activated"`
+	IsExited    bool `test_helper:"is_exited"`
+	IsUnjoin    bool `test_helper:"is_unjoin"`
 }
 
 type CustomAttr struct {
-	Id    string      `json:"id"`
-	Type  string      `json:"type"`
-	Value interface{} `json:"value"`
+	Id    string      `test_helper:"id"`
+	Type  string      `test_helper:"type"`
+	Value interface{} `test_helper:"value"`
 }
 
 type UserGroup struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
+	Id   string `test_helper:"id"`
+	Name string `test_helper:"name"`
 }
 
 type UserIdItem struct {
-	UserId string `json:"user_id"`
-	Email  string `json:"email"`
-	Phone  string `json:"phone"`
+	UserId string `test_helper:"user_id"`
+	Email  string `test_helper:"email"`
+	Phone  string `test_helper:"phone"`
 }
 
 // ****************** Approval ******************
 
 // 审批实例
 type ApprovalInstance struct {
-	ApprovalCode string         `json:"approval_code"`
-	ApprovalName string         `json:"approval_name"`
-	StartTime    int64          `json:"start_time"`
-	EndTime      int64          `json:"end_time"`
-	UUID         string         `json:"uuid"`
-	UserId       string         `json:"user_id"`
-	OpenId       string         `json:"open_id"`
-	SerialNumber string         `json:"serial_number"`
-	DepartmentId string         `json:"department_id"`
-	Status       string         `json:"status"`
-	Form         string         `json:"form"`
-	formData     []ApprovalForm `json:"-"`
+	ApprovalCode string         `test_helper:"approval_code"`
+	ApprovalName string         `test_helper:"approval_name"`
+	StartTime    int64          `test_helper:"start_time"`
+	EndTime      int64          `test_helper:"end_time"`
+	UUID         string         `test_helper:"uuid"`
+	UserId       string         `test_helper:"user_id"`
+	OpenId       string         `test_helper:"open_id"`
+	SerialNumber string         `test_helper:"serial_number"`
+	DepartmentId string         `test_helper:"department_id"`
+	Status       string         `test_helper:"status"`
+	Form         string         `test_helper:"form"`
+	formData     []ApprovalForm `test_helper:"-"`
 }
 
 func (a ApprovalInstance) FormData() []ApprovalForm {
@@ -124,12 +124,12 @@ func (a ApprovalInstance) GetForm(id string, name string) *ApprovalForm {
 
 // 审批控件
 type ApprovalForm struct {
-	Id       string      `json:"id"`
-	CustomId string      `json:"custom_id,omitempty"`
-	Name     string      `json:"name"`
-	Type     string      `json:"type"`
-	Value    interface{} `json:"value"`
-	Ext      interface{} `json:"ext"`
+	Id       string      `test_helper:"id"`
+	CustomId string      `test_helper:"custom_id,omitempty"`
+	Name     string      `test_helper:"name"`
+	Type     string      `test_helper:"type"`
+	Value    interface{} `test_helper:"value"`
+	Ext      interface{} `test_helper:"ext"`
 }
 
 func (f ApprovalForm) StrVal() string {
@@ -159,9 +159,9 @@ func (f ApprovalForm) TimeIntervalVal() ApprovalFormTimeInterval {
 }
 
 type ApprovalFormTimeInterval struct {
-	Start    string `json:"start"`
-	End      string `json:"end"`
-	Interval string `json:"interval"`
+	Start    string `test_helper:"start"`
+	End      string `test_helper:"end"`
+	Interval string `test_helper:"interval"`
 }
 
 func (a ApprovalFormTimeInterval) StartTime() time.Time {
@@ -176,82 +176,82 @@ func (a ApprovalFormTimeInterval) EndTime() time.Time {
 
 // ****************** Calendar ******************
 type Calendar struct {
-	CalendarId string `json:"calendar_id"`
-	Summary    string `json:"summary"`
-	Type       string `json:"type"`
+	CalendarId string `test_helper:"calendar_id"`
+	Summary    string `test_helper:"summary"`
+	Type       string `test_helper:"type"`
 }
 
 type CalendarEventTime struct {
-	Date      string `json:"date,omitempty"`
-	Timestamp string `json:"timestamp,omitempty"`
-	Timezone  string `json:"timezone,omitempty"`
+	Date      string `test_helper:"date,omitempty"`
+	Timestamp string `test_helper:"timestamp,omitempty"`
+	Timezone  string `test_helper:"timezone,omitempty"`
 }
 
 type CalendarEventVchat struct {
-	VcType      string `json:"vc_type"`
-	Description string `json:"description"`
-	MeetingUrl  string `json:"meeting_url"`
+	VcType      string `test_helper:"vc_type"`
+	Description string `test_helper:"description"`
+	MeetingUrl  string `test_helper:"meeting_url"`
 }
 
 // 日程
 type CalendarEvent struct {
-	EventId          string              `json:"event_id"`
-	Summary          string              `json:"summary"`
-	Description      string              `json:"description"`
-	NeedNotification bool                `json:"need_notification"`
-	StartTime        CalendarEventTime   `json:"start_time"`
-	EndTime          CalendarEventTime   `json:"end_time"`
-	Vchat            *CalendarEventVchat `json:"vchat,omitempty"`
-	Recurrence       string              `json:"recurrence,omitempty"`
-	Status           string              `json:"status"`
+	EventId          string              `test_helper:"event_id"`
+	Summary          string              `test_helper:"summary"`
+	Description      string              `test_helper:"description"`
+	NeedNotification bool                `test_helper:"need_notification"`
+	StartTime        CalendarEventTime   `test_helper:"start_time"`
+	EndTime          CalendarEventTime   `test_helper:"end_time"`
+	Vchat            *CalendarEventVchat `test_helper:"vchat,omitempty"`
+	Recurrence       string              `test_helper:"recurrence,omitempty"`
+	Status           string              `test_helper:"status"`
 }
 
 // 日程参与者
 type CalendarEventAttendee struct {
-	AttendeeId      string `json:"attendee_id"`
-	Type            string `json:"type"`
-	IsOptional      bool   `json:"is_optional,omitempty"`
-	UserId          string `json:"user_id,omitempty"`
-	ChatId          string `json:"chat_id,omitempty"`
-	RoomId          string `json:"room_id,omitempty"`
-	ThirdPartyEmail string `json:"third_party_email,omitempty"`
+	AttendeeId      string `test_helper:"attendee_id"`
+	Type            string `test_helper:"type"`
+	IsOptional      bool   `test_helper:"is_optional,omitempty"`
+	UserId          string `test_helper:"user_id,omitempty"`
+	ChatId          string `test_helper:"chat_id,omitempty"`
+	RoomId          string `test_helper:"room_id,omitempty"`
+	ThirdPartyEmail string `test_helper:"third_party_email,omitempty"`
 }
 
 // ****************** Meeting Room ******************
 type OrganizerInfo struct {
-	Name string `json:"name"`
+	Name string `test_helper:"name"`
 }
 
 // 闲忙
 type FreeBusyItem struct {
-	Uid           string         `json:"uid"`
-	StartTime     string         `json:"start_time"`
-	EndTime       string         `json:"end_time"`
-	OriginalTime  int64          `json:"original_time"`
-	OrganizerInfo *OrganizerInfo `json:"organizer_info"`
+	Uid           string         `test_helper:"uid"`
+	StartTime     string         `test_helper:"start_time"`
+	EndTime       string         `test_helper:"end_time"`
+	OriginalTime  int64          `test_helper:"original_time"`
+	OrganizerInfo *OrganizerInfo `test_helper:"organizer_info"`
 }
 
 // 建筑物
 type Building struct {
-	BuildingId  string   `json:"building_id"`
-	Name        string   `json:"name"`
-	Description string   `json:"description"`
-	Floors      []string `json:"floors"`
-	CountryId   string   `json:"country_id"`
-	DistrictId  string   `json:"district_id"`
+	BuildingId  string   `test_helper:"building_id"`
+	Name        string   `test_helper:"name"`
+	Description string   `test_helper:"description"`
+	Floors      []string `test_helper:"floors"`
+	CountryId   string   `test_helper:"country_id"`
+	DistrictId  string   `test_helper:"district_id"`
 }
 
 // 会议室
 type MeetingRoom struct {
-	RoomId       string `json:"room_id"`
-	Name         string `json:"name"`
-	Description  string `json:"description"`
-	DisplayId    string `json:"display_id"`
-	Capacity     int64  `json:"capacity"`
-	IsDisabled   bool   `json:"is_disabled"`
-	BuildingId   string `json:"building_id"`
-	BuildingName string `json:"building_name"`
-	FloorName    string `json:"floor_name"`
+	RoomId       string `test_helper:"room_id"`
+	Name         string `test_helper:"name"`
+	Description  string `test_helper:"description"`
+	DisplayId    string `test_helper:"display_id"`
+	Capacity     int64  `test_helper:"capacity"`
+	IsDisabled   bool   `test_helper:"is_disabled"`
+	BuildingId   string `test_helper:"building_id"`
+	BuildingName string `test_helper:"building_name"`
+	FloorName    string `test_helper:"floor_name"`
 }
 
 func (r MeetingRoom) DisplayName() string {
@@ -260,31 +260,31 @@ func (r MeetingRoom) DisplayName() string {
 
 // ****************** Event ******************
 type EncryptEventData struct {
-	Encrypt string `json:"encrypt"`
+	Encrypt string `test_helper:"encrypt"`
 }
 
 type EventData struct {
-	RawData []byte `json:"-"`
+	RawData []byte `test_helper:"-"`
 	// v2
-	Schema string `json:"schema"` // 事件格式的版本。无此字段的即为1.0
+	Schema string `test_helper:"schema"` // 事件格式的版本。无此字段的即为1.0
 	Header struct {
-		EventId    string    `json:"event_id"`    // 事件的唯一标识
-		Token      string    `json:"token"`       // 即Verification Token
-		CreateTime string    `json:"create_time"` //  事件发送的时间
-		EventType  EventType `json:"event_type"`  // 事件类型
-		TenantKey  string    `json:"tenant_key"`  // 企业标识
-		AppId      string    `json:"app_id"`      // 应用ID
+		EventId    string    `test_helper:"event_id"`    // 事件的唯一标识
+		Token      string    `test_helper:"token"`       // 即Verification Token
+		CreateTime string    `test_helper:"create_time"` //  事件发送的时间
+		EventType  EventType `test_helper:"event_type"`  // 事件类型
+		TenantKey  string    `test_helper:"tenant_key"`  // 企业标识
+		AppId      string    `test_helper:"app_id"`      // 应用ID
 
-	} `json:"header"`
+	} `test_helper:"header"`
 
 	// v1
-	Timestamp string    `json:"ts"`    // 事件发送的时间，一般近似于事件发生的时间。
-	UUID      string    `json:"uuid"`  // 事件的唯一标识
-	Token     string    `json:"token"` // 即Verification Token
-	Type      EventType `json:"type"`  // event_callback-事件推送，url_verification-url地址验证
-	Challenge string    `json:"challenge"`
+	Timestamp string    `test_helper:"ts"`    // 事件发送的时间，一般近似于事件发生的时间。
+	UUID      string    `test_helper:"uuid"`  // 事件的唯一标识
+	Token     string    `test_helper:"token"` // 即Verification Token
+	Type      EventType `test_helper:"type"`  // event_callback-事件推送，url_verification-url地址验证
+	Challenge string    `test_helper:"challenge"`
 
-	Event map[string]interface{} `json:"event"`
+	Event map[string]interface{} `test_helper:"event"`
 }
 
 func (e EventData) IsV2() bool {
@@ -308,35 +308,35 @@ func (e EventData) VerificationToken() string {
 }
 
 type EventUserId struct {
-	UnionId string `json:"union_id"`
-	UserId  string `json:"user_id"`
-	OpenId  string `json:"open_id"`
+	UnionId string `test_helper:"union_id"`
+	UserId  string `test_helper:"user_id"`
+	OpenId  string `test_helper:"open_id"`
 }
 
 type EventUser struct {
-	Name      string      `json:"name"`
-	TenantKey string      `json:"tenant_key"`
-	UserId    EventUserId `json:"user_id"`
+	Name      string      `test_helper:"name"`
+	TenantKey string      `test_helper:"tenant_key"`
+	UserId    EventUserId `test_helper:"user_id"`
 }
 
 type EventChatUserAddedData struct {
-	ChatId            string      `json:"chat_id"`
-	OperatorId        EventUserId `json:"operator_id"`
-	External          bool        `json:"external"`
-	OperatorTenantKey string      `json:"operator_tenant_key"`
-	Users             []EventUser `json:"users"`
+	ChatId            string      `test_helper:"chat_id"`
+	OperatorId        EventUserId `test_helper:"operator_id"`
+	External          bool        `test_helper:"external"`
+	OperatorTenantKey string      `test_helper:"operator_tenant_key"`
+	Users             []EventUser `test_helper:"users"`
 }
 
 type EventStaffAddedData struct {
-	Object User `json:"object"`
+	Object User `test_helper:"object"`
 }
 
 type EventStaffUpdatedData struct {
-	Object    User `json:"object"`
-	OldObject User `json:"old_object"`
+	Object    User `test_helper:"object"`
+	OldObject User `test_helper:"old_object"`
 }
 
 type EventMeetingRoomStatusChangedData struct {
-	RoomId   string `json:"room_id"`
-	RoomName string `json:"room_name"`
+	RoomId   string `test_helper:"room_id"`
+	RoomName string `test_helper:"room_name"`
 }

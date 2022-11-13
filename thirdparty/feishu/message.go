@@ -9,9 +9,9 @@ import (
 )
 
 type SendMessageParam struct {
-	ReceiveId string `json:"receive_id"`
-	Content   string `json:"content"`
-	MsgType   string `json:"msg_type"`
+	ReceiveId string `test_helper:"receive_id"`
+	Content   string `test_helper:"content"`
+	MsgType   string `test_helper:"msg_type"`
 }
 
 func (cli *Client) SendMessage(ctx context.Context, recvType string, param SendMessageParam) error {
@@ -25,13 +25,13 @@ func (cli *Client) SendMessage(ctx context.Context, recvType string, param SendM
 }
 
 type BulkSendMessageParam struct {
-	Content       interface{} `json:"content,omitempty"`
-	Card          interface{} `json:"card,omitempty"`
-	MsgType       string      `json:"msg_type"`
-	DepartmentIds []string    `json:"department_ids,omitempty"`
-	OpenIds       []string    `json:"open_ids,omitempty"`
-	UserIds       []string    `json:"user_ids,omitempty"`
-	UnionIds      []string    `json:"union_ids,omitempty"`
+	Content       interface{} `test_helper:"content,omitempty"`
+	Card          interface{} `test_helper:"card,omitempty"`
+	MsgType       string      `test_helper:"msg_type"`
+	DepartmentIds []string    `test_helper:"department_ids,omitempty"`
+	OpenIds       []string    `test_helper:"open_ids,omitempty"`
+	UserIds       []string    `test_helper:"user_ids,omitempty"`
+	UnionIds      []string    `test_helper:"union_ids,omitempty"`
 }
 
 func (cli *Client) BulkSendMessage(ctx context.Context, param BulkSendMessageParam) error {

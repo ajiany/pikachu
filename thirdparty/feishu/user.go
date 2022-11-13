@@ -19,8 +19,8 @@ func (cli *Client) GetUserDetail(ctx context.Context, userId, userIdType string)
 
 	var resp struct {
 		Data struct {
-			User User `json:"user"`
-		} `json:"data"`
+			User User `test_helper:"user"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, errors.WithStack(err)
@@ -44,8 +44,8 @@ func (cli *Client) GetUserByEmailOrMobile(ctx context.Context, emails, mobiles [
 
 	var resp struct {
 		Data struct {
-			UserList []UserIdItem `json:"user_list"`
-		} `json:"data"`
+			UserList []UserIdItem `test_helper:"user_list"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, errors.WithStack(err)

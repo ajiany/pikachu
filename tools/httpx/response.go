@@ -43,7 +43,7 @@ func (r *Response) ContentType() string {
 
 func (r *Response) LoggerAble() bool {
 	t := r.ContentType()
-	return t == "application/json" || t == "text/plain"
+	return t == "application/test_helper" || t == "text/plain"
 }
 
 func (r *Response) ParsedBytes() ([]byte, error) {

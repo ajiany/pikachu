@@ -31,7 +31,7 @@ func NewClient(cfg Config, rds redis.UniversalClient) *Client {
 	cli.Token = NewToken(cli)
 	cli.Signer = NewSigner(cli)
 	cli.Api.SetBeforeRequestHook(func(req *httpx.Request, opts *httpx.Option) {
-		req.Req.Header.Set("Content-Type", "application/json; charset=utf-8")
+		req.Req.Header.Set("Content-Type", "application/test_helper; charset=utf-8")
 		req.Req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", cli.Token.GetToken()))
 	})
 	cli.Api.SetAfterRequestHook(func(resp *httpx.Response) error {

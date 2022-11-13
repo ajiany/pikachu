@@ -17,10 +17,10 @@ func (cli *Client) GetPrimaryCalendar(ctx context.Context) (*Calendar, error) {
 	var resp struct {
 		Data struct {
 			Calendars []struct {
-				Calendar Calendar `json:"calendar"`
-				UserId   string   `json:"user_id"`
-			} `json:"calendars"`
-		} `json:"data"`
+				Calendar Calendar `test_helper:"calendar"`
+				UserId   string   `test_helper:"user_id"`
+			} `test_helper:"calendars"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, errors.WithStack(err)
@@ -39,8 +39,8 @@ func (cli *Client) CreateCalendarEvent(ctx context.Context, calendarId string, e
 
 	var resp struct {
 		Data struct {
-			Event CalendarEvent `json:"event"`
-		} `json:"data"`
+			Event CalendarEvent `test_helper:"event"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, errors.WithStack(err)
@@ -59,8 +59,8 @@ func (cli *Client) UpdateCalendarEvent(ctx context.Context, calendarId string, e
 
 	var resp struct {
 		Data struct {
-			Event CalendarEvent `json:"event"`
-		} `json:"data"`
+			Event CalendarEvent `test_helper:"event"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, errors.WithStack(err)
@@ -136,8 +136,8 @@ func (cli *Client) GetCalendarEventAttendees(ctx context.Context, calendarId, ev
 	var resp struct {
 		Data struct {
 			Pagination
-			Items []CalendarEventAttendee `json:"items"`
-		} `json:"data"`
+			Items []CalendarEventAttendee `test_helper:"items"`
+		} `test_helper:"data"`
 	}
 	if err := r.ParsedStruct(&resp); err != nil {
 		return nil, nil, errors.WithStack(err)

@@ -6,11 +6,11 @@ const DefaultPageSize = 10
 const MaxPageSize = 100
 
 type PaginationData struct {
-	Count    int64       `json:"count"`
-	Current  int         `json:"current"`
-	PageSize int         `json:"page_size"`
-	HasNext  bool        `json:"has_next"`
-	Data     interface{} `json:"data"`
+	Count    int64       `test_helper:"count"`
+	Current  int         `test_helper:"current"`
+	PageSize int         `test_helper:"page_size"`
+	HasNext  bool        `test_helper:"has_next"`
+	Data     interface{} `test_helper:"data"`
 }
 
 func NewPaginationData(total int64, page int, pageSize int, data interface{}) *PaginationData {
